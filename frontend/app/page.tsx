@@ -92,12 +92,12 @@ ${result.data.quiz_questions
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-100 via-purple-50 to-blue-100 flex flex-col items-center p-10">
       <h1 className="text-6xl font-extrabold mb-4 bg-gradient-to-r from-red-500 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-  AI Learning Assistant
+  VidMentor
 </h1>
 
 <p className="text-lg text-gray-700 mb-8 text-center max-w-2xl">
-  Transform any YouTube video into summaries, study notes,
-  concepts and quizzes powered by Gemini AI.
+  Your AI-powered study companion for YouTube videos.
+  
 </p>
 
       <input
