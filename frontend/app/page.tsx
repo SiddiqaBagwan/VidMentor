@@ -2,6 +2,12 @@
 
 import { useState } from "react";
 import axios from "axios";
+import {
+  Brain,
+  BookOpen,
+  FileText,
+  CircleHelp,
+} from "lucide-react";
 
 export default function Home() {
   const [videoUrl, setVideoUrl] = useState("");
@@ -84,26 +90,27 @@ ${result.data.quiz_questions
 };
 
   return (
-    <main className="min-h-screen bg-gray-100 flex flex-col items-center p-10">
-      <h1 className="text-5xl font-bold mb-4">
-        YouTube Learning Assistant
-      </h1>
+    <main className="min-h-screen bg-gradient-to-br from-slate-100 via-purple-50 to-blue-100 flex flex-col items-center p-10">
+      <h1 className="text-6xl font-extrabold mb-4 bg-gradient-to-r from-red-500 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+  AI Learning Assistant
+</h1>
 
-      <p className="text-gray-600 mb-8 text-center">
-        Turn any YouTube video into study notes, concepts, and quizzes.
-      </p>
+<p className="text-lg text-gray-700 mb-8 text-center max-w-2xl">
+  Transform any YouTube video into summaries, study notes,
+  concepts and quizzes powered by Gemini AI.
+</p>
 
       <input
         type="text"
         placeholder="Paste YouTube URL..."
         value={videoUrl}
         onChange={(e) => setVideoUrl(e.target.value)}
-        className="border bg-white p-3 rounded-lg w-full max-w-2xl shadow"
+        className="bg-white/80 backdrop-blur-md p-4 rounded-2xl w-full max-w-3xl shadow-2xl border border-white"
       />
 
       <div className="flex gap-3 mt-4 flex-wrap">
   <button
-    className="px-6 py-3 bg-black text-white rounded-lg"
+    className="px-6 py-3 rounded-xl text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:scale-105 transition shadow-lg"
     onClick={analyzeVideo}
     disabled={loading}
   >
@@ -131,18 +138,20 @@ ${result.data.quiz_questions
       {result && result.success && (
         <div className="mt-10 w-full max-w-5xl space-y-6">
 
-          <div className="bg-white shadow-md rounded-xl p-6">
-            <h2 className="text-2xl font-bold mb-3">
-              Summary
-            </h2>
+          <div className="bg-white/90 backdrop-blur-md shadow-xl rounded-3xl p-6 border border-white">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+  <Brain size={24} />
+  Summary
+</h2>
             <p>{result.data.summary}</p>
           </div>
 
-          <div className="bg-white shadow-md rounded-xl p-6">
+          <div className="bg-white/90 backdrop-blur-md shadow-xl rounded-3xl p-6 border border-white">
   <div className="flex justify-between items-center mb-3">
-    <h2 className="text-2xl font-bold">
-      Study Notes
-    </h2>
+    <h2 className="text-2xl font-bold flex items-center gap-2">
+  <BookOpen size={24} />
+  Study Notes
+</h2>
 
     <button
       className="px-3 py-1 border rounded hover:bg-gray-100"
@@ -167,10 +176,11 @@ ${result.data.quiz_questions
   </ul>
 </div>
 
-          <div className="bg-white shadow-md rounded-xl p-6">
-            <h2 className="text-2xl font-bold mb-3">
-              Key Concepts
-            </h2>
+          <div className="bg-white/90 backdrop-blur-md shadow-xl rounded-3xl p-6 border border-white">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+  <FileText size={24} />
+  Key Concepts
+</h2>
 
             <ul className="list-disc pl-5 space-y-2">
               {result.data.key_concepts.map(
@@ -181,7 +191,7 @@ ${result.data.quiz_questions
             </ul>
           </div>
 
-          <div className="bg-white shadow-md rounded-xl p-6">
+          <div className="bg-white/90 backdrop-blur-md shadow-xl rounded-3xl p-6 border border-white">
             <h2 className="text-2xl font-bold mb-3">
               Important Terms
             </h2>
@@ -191,7 +201,7 @@ ${result.data.quiz_questions
                 (term: string, index: number) => (
                   <span
                     key={index}
-                    className="bg-gray-200 px-3 py-1 rounded-full"
+                    className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm shadow"
                   >
                     {term}
                   </span>
@@ -200,10 +210,11 @@ ${result.data.quiz_questions
             </div>
           </div>
 
-          <div className="bg-white shadow-md rounded-xl p-6">
-  <h2 className="text-2xl font-bold mb-3">
-    Quiz Questions
-  </h2>
+          <div className="bg-white/90 backdrop-blur-md shadow-xl rounded-3xl p-6 border border-white">
+  <h2 className="text-2xl font-bold flex items-center gap-2">
+  <CircleHelp size={24} />
+  Quiz Questions
+</h2>
 
   {result.data.quiz_questions.map(
     (
@@ -215,7 +226,7 @@ ${result.data.quiz_questions
     ) => (
       <div
         key={index}
-        className="border rounded-lg p-4 mb-3"
+        className="bg-slate-50 rounded-2xl p-5 mb-4 shadow"
       >
         <p>
           <strong>Q:</strong> {quiz.question}
